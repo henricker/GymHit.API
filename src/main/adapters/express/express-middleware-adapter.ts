@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { IHttpRequest, IMiddleware } from "../../../presentation/protocols";
+import { NextFunction, Request, Response } from 'express';
+import { IHttpRequest, IMiddleware } from '../../../presentation/protocols';
 
 export const adaptMiddleware =
   (middleware: IMiddleware) =>

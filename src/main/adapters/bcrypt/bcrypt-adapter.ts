@@ -1,5 +1,5 @@
-import brcrypt from "bcrypt";
-import { IHash } from "../../../domain/services/hash-compare.service";
+import brcrypt from 'bcrypt';
+import { IHash } from '../../../domain/services/hash-compare.service';
 
 export class BcryptAdapter implements IHash {
   constructor(private readonly salt: number) {}

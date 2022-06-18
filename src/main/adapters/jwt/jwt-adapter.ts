@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import { IJwt } from "../../../domain/services/encrypter.service";
+import jwt from 'jsonwebtoken';
+import { IJwt } from '../../../domain/services/encrypter.service';
 
 export class JwtAdapter implements IJwt {
   constructor(private readonly secretKey: string) {}
