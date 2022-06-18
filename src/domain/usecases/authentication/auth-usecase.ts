@@ -1,3 +1,4 @@
+import { IUserRepository } from '../../repositories/user-repository.interface';
 import { IUseCase } from '../usecase.interface';
 
 type AuthUseCaseDto = {
@@ -6,8 +7,10 @@ type AuthUseCaseDto = {
 };
 
 export class AuthUseCase implements IUseCase {
+  constructor(private readonly repository: IUserRepository) {}
+
   /* eslint-disable no-unused-vars */
-  handle({ email, password }: AuthUseCaseDto): Promise<any> {
-    throw new Error('Method not implemented.');
+  async handle({ email, password }: AuthUseCaseDto): Promise<string | null> {
+    const user = await this.repository.findOneByEmail(email);
   }
 }
