@@ -1,3 +1,3 @@
 export interface IEncrypter {
-  sign(value: string): Promise<string>;
+  sign(value: any): Promise<string>;
 }
