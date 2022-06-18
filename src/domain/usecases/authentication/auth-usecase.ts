@@ -27,6 +27,7 @@ export class AuthUseCase implements IUseCase {
 
     const accessToken = await this.encrypter.sign(user.id);
 
+    console.log(accessToken);
     return accessToken;
   }
 }
