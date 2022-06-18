@@ -7,7 +7,7 @@ import { IAuthParams } from "./auth-params.dto";
 export class AuthUseCase implements IUseCase {
   constructor(
     private readonly repository: IUserRepository,
-    private readonly hashCompare: IHash,
+    private readonly hash: IHash,
     private readonly encrypter: IJwt
   ) {}
 
@@ -19,7 +19,7 @@ export class AuthUseCase implements IUseCase {
       return null;
     }
 
-    const compare = await this.hashCompare.compare(password, user.password);
+    const compare = await this.hash.compare(password, user.password);
 
     if (!compare) {
       return null;
@@ -27,7 +27,6 @@ export class AuthUseCase implements IUseCase {
 
     const accessToken = await this.encrypter.sign(user.id);
 
-    console.log(accessToken);
     return accessToken;
   }
 }
