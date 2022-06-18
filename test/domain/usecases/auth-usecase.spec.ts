@@ -1,7 +1,5 @@
 import { IUserRepository } from '../../../src/domain/repositories/user-repository.interface';
 import { AuthUseCase } from '../../../src/domain/usecases/authentication/auth-usecase';
-import { EmailNotExists } from '../../../src/presentation/errors';
-import { badRequest } from '../../../src/presentation/helpers/http-helpers';
 import { mockAuthenticationParams } from '../../mocks/mock-account';
 import { makeUserRepository } from '../../mocks/repositories/mock-user.repository';
 
