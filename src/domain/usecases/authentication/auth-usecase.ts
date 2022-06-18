@@ -1,8 +1,8 @@
-import { IUserRepository } from "../../repositories/user-repository.interface";
-import { IEncrypter } from "../../services/encrypter.service";
-import { IHashComparer } from "../../services/hash-compare.service";
-import { IUseCase } from "../usecase.interface";
-import { IAuthParams } from "./auth-params.dto";
+import { IUserRepository } from '../../repositories/user-repository.interface';
+import { IEncrypter } from '../../services/encrypter.service';
+import { IHashComparer } from '../../services/hash-compare.service';
+import { IUseCase } from '../usecase.interface';
+import { IAuthParams } from './auth-params.dto';
 
 export class AuthUseCase implements IUseCase {
   constructor(
