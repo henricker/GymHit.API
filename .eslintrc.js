@@ -49,6 +49,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-unused-vars': 'off',
     'no-useless-constructor': 'off',
-    'no-empty-function': 'off'
+    'no-empty-function': 'off',
+    'max-classes-per-file': 'off'
   },
 };
