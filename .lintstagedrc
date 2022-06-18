@@ -1,0 +1,3 @@
+{
+  "*.{js,ts}": ["yarn lint", "prettier --write", "yarn test:unit", "yarn test:integration"]
+} 
