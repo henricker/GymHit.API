@@ -1,27 +1,27 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSource, DataSourceOptions } from "typeorm";
 
-import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import path from 'path';
-import env from 'dotenv';
+import { SnakeNamingStrategy } from "typeorm-naming-strategies";
+import path from "path";
+import env from "dotenv";
 
 env.config();
 
 const getDbOptionsByEnv = () =>
-  process.env.NODE_ENV === 'test'
+  process.env.NODE_ENV === "test"
     ? {
-        type: 'sqlite',
+        type: "sqlite",
         database: path.resolve(
           __dirname,
-          '..',
-          '..',
-          '..',
-          'test',
-          'data',
-          'db.test.sqlite'
+          "..",
+          "..",
+          "..",
+          "test",
+          "data",
+          "db.test.sqlite"
         ),
       }
     : {
-        type: 'postgres',
+        type: "postgres",
         host: process.env.POSTGRES_HOST,
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
@@ -32,10 +32,10 @@ export const AppDataSource = new DataSource({
   ...getDbOptionsByEnv(),
   name: process.env.NODE_ENV,
   migrations: [`${__dirname}/migrations/*.ts`],
-  entities: [`${__dirname}/../../main/entities/*.ts`],
+  entities: [`${__dirname}/entities/*.ts`],
   synchronize: false,
   migrationsRun: true,
-  logging: process.env.NODE_ENV === 'dev',
+  logging: process.env.NODE_ENV === "dev",
   namingStrategy: new SnakeNamingStrategy(),
-  migrationsTableName: 'migrations',
+  migrationsTableName: "migrations",
 } as DataSourceOptions);

@@ -4,10 +4,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { IUser } from '../../domain/entities/user.interface';
+} from "typeorm";
+import { IUser } from "../../../domain/entities/user.interface";
 
-@Entity('users')
+@Entity("users")
 export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
