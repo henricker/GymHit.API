@@ -9,18 +9,33 @@ import {
 } from '../../../src/presentation/helpers/http-helpers';
 import { IHttpRequest, IValidation } from '../../../src/presentation/protocols';
 import { mockAuthenticationParams } from '../../mocks/mock-account';
+import { makeUserRepository } from '../../mocks/repositories/mock-user.repository';
 
 type SutType = {
   sut: LoginController;
   validationStub: IValidation;
-  authenticationStub: AuthUseCase;
+  authenticationStub: IUseCase;
 };
 
 const makeFakeRequest = (): IHttpRequest => ({
   body: mockAuthenticationParams(),
 });
 
-const makeAuthUseCase = (): IUseCase => new AuthUseCase();
+const makeAuthUseCase = (): IUseCase => {
+  class AuthUseCaseStub implements IUseCase {
+    async handle({
+      email,
+      password,
+    }: {
+      email: string;
+      password: string;
+    }): Promise<string> {
+      return 'access_token';
+    }
+  }
+
+  return new AuthUseCaseStub();
+};
 
 const makeValidation = (): IValidation => {
   class ValidationStub implements IValidation {
