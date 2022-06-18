@@ -7,5 +7,8 @@ export interface IHttpRequest {
   body?: any;
   headers?: any;
   params?: any;
-  userId?: number;
+  user?: {
+    id: number;
+    email: string;
+  };
 }

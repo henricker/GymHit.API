@@ -1,14 +1,14 @@
-import { IUserRepository } from '../../repositories/user-repository.interface';
-import { IEncrypter } from '../../services/encrypter.service';
-import { IHashComparer } from '../../services/hash-compare.service';
-import { IUseCase } from '../usecase.interface';
-import { IAuthParams } from './auth-params.dto';
+import { IUserRepository } from "../../repositories/user-repository.interface";
+import { IJwt } from "../../services/encrypter.service";
+import { IHash } from "../../services/hash-compare.service";
+import { IUseCase } from "../usecase.interface";
+import { IAuthParams } from "./auth-params.dto";
 
 export class AuthUseCase implements IUseCase {
   constructor(
     private readonly repository: IUserRepository,
-    private readonly hashCompare: IHashComparer,
-    private readonly encrypter: IEncrypter
+    private readonly hashCompare: IHash,
+    private readonly encrypter: IJwt
   ) {}
 
   /* eslint-disable no-unused-vars */

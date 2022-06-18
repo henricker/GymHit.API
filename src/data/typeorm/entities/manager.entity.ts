@@ -4,10 +4,10 @@ import {
   CreateDateColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { IManager } from "../../../domain/entities/manager.interface";
+} from 'typeorm';
+import { IManager } from '../../../domain/entities/manager.interface';
 
-@Entity("managers")
+@Entity('managers')
 export class Manager implements IManager {
   @PrimaryGeneratedColumn()
   id: number;
