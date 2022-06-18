@@ -1,28 +1,17 @@
-import { IUser } from '../../../src/domain/entities/user.interface';
 import { IUserRepository } from '../../../src/domain/repositories/user-repository.interface';
 import { AuthUseCase } from '../../../src/domain/usecases/authentication/auth-usecase';
-import {
-  mockAuthenticationParams,
-  mockFakeUserAccount,
-} from '../../mocks/mock-account';
+import { EmailNotExists } from '../../../src/presentation/errors';
+import { badRequest } from '../../../src/presentation/helpers/http-helpers';
+import { mockAuthenticationParams } from '../../mocks/mock-account';
+import { makeUserRepository } from '../../mocks/repositories/mock-user.repository';
 
 type SutType = {
   sut: AuthUseCase;
   repositoryStub: IUserRepository;
 };
 
-const makeRepository = (): IUserRepository => {
-  class RepositoryStub implements IUserRepository {
-    async findOneByEmail(email: string): Promise<IUser> {
-      return mockFakeUserAccount();
-    }
-  }
-
-  return new RepositoryStub();
-};
-
 const makeSut = (): SutType => {
-  const repositoryStub = makeRepository();
+  const repositoryStub = makeUserRepository();
   const sut = new AuthUseCase(repositoryStub);
 
   return {
@@ -31,9 +20,6 @@ const makeSut = (): SutType => {
   };
 };
 
-const makeFakeLogin = (): { email: string; password: string } =>
-  mockAuthenticationParams();
-
 describe('#UseCase auth', () => {
   it('Should call repository with correct values', async () => {
     const { repositoryStub, sut } = makeSut();
@@ -41,5 +27,17 @@ describe('#UseCase auth', () => {
     const authParams = mockAuthenticationParams();
     sut.handle(authParams);
     expect(repositorySpy).toBeCalledWith(authParams.email);
+  });
+
+  it('Should return null if email not exists', async () => {
+    const { repositoryStub, sut } = makeSut();
+
+    jest
+      .spyOn(repositoryStub, 'findOneByEmail')
+      .mockImplementationOnce(() => null);
+
+    const received = await sut.handle(mockAuthenticationParams());
+
+    expect(received).toBeNull();
   });
 });
