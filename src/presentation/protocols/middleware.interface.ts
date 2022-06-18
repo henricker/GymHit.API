@@ -1,5 +1,5 @@
-import { IHttpRequest, IHttpResponse } from "./http.interface";
+import { IHttpRequest, IHttpResponse } from './http.interface';
 
 export interface IMiddleware {
-    handle(request: IHttpRequest): Promise<IHttpResponse>
+  handle(request: IHttpRequest): Promise<IHttpResponse>;
 }

@@ -1,4 +1,3 @@
-
 export interface IUseCase {
-    handle(...params: any): Promise<any>
+  handle(...params: any): Promise<any>;
 }

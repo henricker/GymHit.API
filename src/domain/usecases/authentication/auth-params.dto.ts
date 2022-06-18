@@ -1,5 +1,4 @@
-
 export interface IAuthParams {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }

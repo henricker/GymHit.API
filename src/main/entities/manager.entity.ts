@@ -1,24 +1,29 @@
-import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
-import { IManager } from '../../domain/entities/manager.interface'
+import {
+  Entity,
+  Column,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { IManager } from '../../domain/entities/manager.interface';
 
 @Entity('managers')
 export class Manager implements IManager {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number
+  @Column()
+  cnpj: string;
 
-    @Column()
-    cnpj: string;
+  @Column()
+  coorporateName: string;
 
-    @Column()
-    coorporateName: string;
-    
-    @Column()
-    fantasyName: string;
+  @Column()
+  fantasyName: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

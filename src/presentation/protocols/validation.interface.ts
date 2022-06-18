@@ -1,4 +1,4 @@
-
 export interface IValidation {
-    validate(input: any): Error
+  /* eslint-disable no-unused-vars */
+  validate(input: any): Error;
 }

@@ -44,5 +44,10 @@ module.exports = {
         arrowParens: 'always',
       },
     ],
+    'class-methods-use-this': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'no-unused-vars': 'off',
+    'no-useless-constructor': 'off'
   },
 };
