@@ -1,17 +1,14 @@
-import { AuthUseCase } from '../../../../src/domain/usecases/authentication/auth-usecase';
-import { IUseCase } from '../../../../src/domain/usecases/usecase.interface';
-import { LoginController } from '../../../../src/presentation/controllers/login-controller';
+import { AuthUseCase } from '../../../src/domain/usecases/authentication/auth-usecase';
+import { IUseCase } from '../../../src/domain/usecases/usecase.interface';
+import { LoginController } from '../../../src/presentation/controllers/login-controller';
 import {
   badRequest,
   ok,
   serverError,
   unauthorized,
-} from '../../../../src/presentation/helpers/http-helpers';
-import {
-  IHttpRequest,
-  IValidation,
-} from '../../../../src/presentation/protocols';
-import { mockAuthenticationParams } from '../../../mocks/mock-account';
+} from '../../../src/presentation/helpers/http-helpers';
+import { IHttpRequest, IValidation } from '../../../src/presentation/protocols';
+import { mockAuthenticationParams } from '../../mocks/mock-account';
 
 type SutType = {
   sut: LoginController;
