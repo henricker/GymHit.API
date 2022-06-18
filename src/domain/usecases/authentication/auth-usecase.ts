@@ -12,5 +12,11 @@ export class AuthUseCase implements IUseCase {
   /* eslint-disable no-unused-vars */
   async handle({ email, password }: AuthUseCaseDto): Promise<string | null> {
     const user = await this.repository.findOneByEmail(email);
+
+    if (!user) {
+      return null;
+    }
+
+    return 'access_token';
   }
 }
