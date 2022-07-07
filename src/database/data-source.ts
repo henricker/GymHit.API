@@ -12,7 +12,7 @@ const dataSource = new DataSource({
     migrations: [__dirname + '/migrations/*.ts'],
     entities: ['src/app/entities/*.ts'],
     migrationsRun: true,
-    logging: true,
+    logging: false,
 })
 
 dataSource.initialize()

@@ -8,9 +8,9 @@ type errorsRequest = {
 
 export class CreatePupilController{
     async handle(request: Request, response: Response){
-        const {name, cpf, number, admin_id} = request.body
+        const {name, cpf, email, admin_id, telephone} = request.body
 
-        const dataMandatory = ['name', 'cpf', 'number', 'admin_id']
+        const dataMandatory = ['name', 'cpf', 'email', 'admin_id', 'telephone']
         const errors: Array<errorsRequest> = []
 
         dataMandatory.forEach(element => {
@@ -27,7 +27,7 @@ export class CreatePupilController{
         if(request.admin.admin_id !== admin_id) return response.status(403).json("Not authorized for different admins")
 
         const service = new CreatePupilService()
-        const result = await service.execute({name, cpf, number, admin_id})
+        const result = await service.execute({name, cpf, email, admin_id, telephone})
 
         return result instanceof Error ? response.status(400).json(result.message) : response.status(201).json(result)
     }

@@ -40,7 +40,8 @@ class Token{
         return response.status(200).json({
             accessToken,
             fantasy_name: adminExists.fantasy_name,
-            email: adminExists.email
+            email: adminExists.email,
+            id: adminExists.id,
         })
     }
 }

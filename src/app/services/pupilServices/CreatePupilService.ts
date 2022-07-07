@@ -4,15 +4,17 @@ import dataSource from "../../../database/data-source";
 
 interface PupilRequest{
     name: string
-    cpf: number
-    number: string
-    admin_id: string
+    cpf: string;
+    admin_id: string,
+    telephone: string
+    email: string
 }
 
 export class CreatePupilService{
-    async execute({name, cpf, number, admin_id}: PupilRequest): Promise<Pupil | Error>{
+    async execute({name, cpf, admin_id, telephone, email}: PupilRequest): Promise<Pupil | Error>{
         const pupilRepository = dataSource.getRepository(Pupil)
         const adminRepository = dataSource.getRepository(Admin)
+
 
         if(await pupilRepository.findOne({where: {cpf}})){
             return new Error('Cpf already exists')
@@ -26,8 +28,9 @@ export class CreatePupilService{
         const pupil = pupilRepository.create({
             name,
             cpf,
-            number,
-            admin_id
+            admin_id,
+            telephone,
+            email
         })
 
         await pupilRepository.save(pupil)
