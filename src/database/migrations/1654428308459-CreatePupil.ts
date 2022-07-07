@@ -34,6 +34,11 @@ export class CreatePupil1654428308459 implements MigrationInterface {
                         type: 'uuid'
                     },
                     {
+                        name: 'health_id',
+                        type: 'uuid',
+                        isNullable: true
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp',
                         default: 'now()'
@@ -50,6 +55,12 @@ export class CreatePupil1654428308459 implements MigrationInterface {
                         columnNames: ['admin_id'],
                         referencedTableName: 'admin',
                         referencedColumnNames: ['id']
+                    },
+                    {
+                        name: 'fk_pupils_health',
+                        columnNames: ['health_id'],
+                        referencedTableName: 'info_health',
+                        referencedColumnNames: ['id'] 
                     }
                 ]
             })
