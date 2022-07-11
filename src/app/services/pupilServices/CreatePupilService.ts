@@ -8,10 +8,12 @@ interface PupilRequest{
     admin_id: string,
     telephone: string
     email: string
+    weight: number;
+    height: number;
 }
 
 export class CreatePupilService{
-    async execute({name, cpf, admin_id, telephone, email}: PupilRequest): Promise<Pupil | Error>{
+    async execute({name, cpf, admin_id, telephone, email, height, weight}: PupilRequest): Promise<Pupil | Error>{
         const pupilRepository = dataSource.getRepository(Pupil)
         const adminRepository = dataSource.getRepository(Admin)
 
@@ -30,7 +32,9 @@ export class CreatePupilService{
             cpf,
             admin_id,
             telephone,
-            email
+            email,
+            height,
+            weight
         })
 
         await pupilRepository.save(pupil)

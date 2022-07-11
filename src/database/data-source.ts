@@ -13,6 +13,7 @@ const dataSource = new DataSource({
     entities: ['src/app/entities/*.ts'],
     migrationsRun: true,
     logging: false,
+    synchronize: false
 })
 
 dataSource.initialize()

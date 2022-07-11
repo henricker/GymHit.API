@@ -20,6 +20,12 @@ export class Pupil{
     email: string;
 
     @Column()
+    weight: number;
+
+    @Column()
+    height: number;
+
+    @Column()
     telephone: string;
 
     @ManyToOne(() => Admin)
