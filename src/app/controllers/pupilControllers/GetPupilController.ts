@@ -15,6 +15,11 @@ export class GetPupilController {
             })
         }
 
-        return response.json(pupil)
+        const body = {
+            ...pupil,
+            image: `http://localhost:3535/pupils/image/${pupil.id}`
+        }
+
+        return response.json(body)
     }
 }
