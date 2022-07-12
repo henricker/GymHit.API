@@ -36,6 +36,9 @@ export class Admin{
     @Column()
     number: number;
 
+    @Column()
+    amount: number;
+
     @CreateDateColumn()
     created_at: Date
 

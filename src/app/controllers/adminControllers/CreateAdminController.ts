@@ -3,7 +3,7 @@ import { CreateAdminService } from '../../services/adminServices/CreateAdminServ
 
 export class CreateAdminController{
     async handle(request: Request, response: Response){
-        const dataMandatory = ['email', 'password', 'city', 'street', 'fantasy_name', 'coorporate_name', 'cnpj', 'number', 'district', 'telephone']
+        const dataMandatory = ['email', 'password', 'city', 'street', 'fantasy_name', 'coorporate_name', 'cnpj', 'number', 'district', 'telephone', 'amount']
         const errors: Array<any> = []
 
         dataMandatory.forEach(element => {
